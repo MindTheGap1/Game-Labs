@@ -18,6 +18,7 @@ def remove_punct(text):
     'goSouTh'
     """
     text = ''.join(ch for ch in text if ch not in string.punctuation)
+    
     return text
     
     
@@ -39,6 +40,7 @@ def remove_spaces(text):
     """
 
     return re.sub(r'^\s+|\s+$', "", text)
+    #although I would much rather do text.strip()
 
 
 def normalise_input(user_input):
@@ -56,6 +58,7 @@ def normalise_input(user_input):
     user_input = user_input.lower()
     user_input = remove_punct(user_input)
     user_input = remove_spaces(user_input)
+    
     return user_input
     
 
