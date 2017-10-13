@@ -5,8 +5,6 @@ from player import *
 from items import *
 from gameparser import *
 
-
-
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
     returns a comma-separated list of item names (as a string). For example:
@@ -250,20 +248,24 @@ def execute_take(item_id):
     global current_room
     global inventory
     global inventory_mass
-    
+
+    item_found = False
+
     for index, item in enumerate(current_room["items"]):
         if item_id == item["id"]:
-            if inventory_mass >= 3:
+            if inventory_mass >= 3 or inventory_mass + item["mass"] > 3:
                 print("You are carrying too much to take that")
+                item_found = True
             else:
                 inventory_mass += item["mass"]
                 print("You take " + item["name"] + ".")
                 print("Your current inventory mass is " + str(inventory_mass) + "kg out of a maximum of 3kg")
                 inventory.append(item)          
                 del current_room["items"][index]
+                item_found = True
             break
-        else:
-            print("You cannot take that.")
+    if item_found == False:
+        print("You cannot take that.")
     
     
 
