@@ -284,6 +284,7 @@ def execute_drop(item_id):
             current_room["items"].append(item)
             del inventory[index]
             inventory_mass -= item["mass"]
+            print("You dropped " + item["name"])
             print("Your current inventory mass is " + str(inventory_mass) + "kg out of a maximum of 3kg")
             item_found = True
     if item_found == False:
