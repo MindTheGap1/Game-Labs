@@ -2,7 +2,7 @@
 
 from map import rooms
 import string
-
+import re
 
 def remove_punct(text):
     """This function is used to remove all punctuation
